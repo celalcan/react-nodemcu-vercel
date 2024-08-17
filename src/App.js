@@ -8,7 +8,7 @@ function App() {
   };
 
   const turnOff = () => {
-    fetch("http://https://4559-188-119-62-218.ngrok-free.app/off")
+    fetch("https://4559-188-119-62-218.ngrok-free.app/off")
       .then(response => response.text())
       .then(data => console.log(data));
   };
