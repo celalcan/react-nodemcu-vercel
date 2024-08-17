@@ -2,13 +2,13 @@ import React from 'react';
 
 function App() {
   const turnOn = () => {
-    fetch("http://192.168.2.128/on")
+    fetch("https://f587-188-119-62-218.ngrok-free.app/on")
       .then(response => response.text())
       .then(data => console.log(data));
   };
 
   const turnOff = () => {
-    fetch("http://192.168.2.128/off")
+    fetch("https://f587-188-119-62-218.ngrok-free.app/off")
       .then(response => response.text())
       .then(data => console.log(data));
   };
