@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-const API_URL = 'https://react-nodemcu-vercel.vercel.app/api/settings/1';
+const API_URL = 'https://react-nodemcu-vercel-git-main-celalcans-projects-d09855ab.vercel.app/api/settings/1';
 
 function App() {
   const updateStatus = (newStatus) => {
