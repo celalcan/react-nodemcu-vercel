@@ -1,7 +1,7 @@
 {
     "functions": {
       "api/server.js": {
-        "runtime": "20.x",
+        "runtime": "edge",
         "maxDuration": 60
       }
     },
