@@ -16,7 +16,7 @@ function App() {
 
   // Status değerini güncellemek için Axios kullanın
   const updateStatus = (newStatus) => {
-    axios.put('https://<vercel-project-name>.vercel.app/api/json-server', { status: newStatus })
+    axios.put('https://react-nodemcu-vercel-2598v675m-celalcans-projects-d09855ab.vercel.app/api/json-server', { status: newStatus })
       .then(response => setStatus(response.data.status))
       .catch(error => console.error('Error updating status:', error));
   };
