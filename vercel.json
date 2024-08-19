@@ -1,7 +1,7 @@
 {
     "functions": {
       "api/server.js": {
-        "node": "20.x",
+        "runtime": "20.x",
         "maxDuration": 60
       }
     }
