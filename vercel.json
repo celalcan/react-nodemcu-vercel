@@ -1,7 +1,7 @@
 {
     "functions": {
       "api/server.js": {
-        "runtime": "@vercel/go@0.0.1",
+        "runtime": "18.x",
         "maxDuration": 60
       }
     }
