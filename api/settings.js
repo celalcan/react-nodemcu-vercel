@@ -1,34 +1,30 @@
-// /api/settings.js
-
-// Bellekte bir veri kaynağı oluşturun (örnek veri)
-let settings = {
-    1: { status: 1 }
-  };
+export default function handler(req, res) {
+    // CORS başlıklarını ekleyin
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Tüm kaynaklara izin ver
+    res.setHeader('Access-Control-Allow-Methods', 'GET, PATCH, OPTIONS'); // İzin verilen yöntemler
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   
-  export default function handler(req, res) {
-    const { method } = req;
-    const { id } = req.query; // URL'den gelen id parametresi
-    const { status } = req.body; // PATCH isteğinde gönderilen veri
+    // OPTIONS isteği olduğunda, hızlıca 200 yanıt gönderin
+    if (req.method === 'OPTIONS') {
+      res.status(200).end();
+      return;
+    }
   
-    if (method === 'PATCH') {
-      // Eğer gelen id verisi mevcutsa güncelle
-      if (settings[id]) {
-        settings[id].status = status;
-        res.status(200).json(settings[id]);
-      } else {
-        res.status(404).json({ message: 'Not Found' });
-      }
-    } else if (method === 'GET') {
-      // GET isteği ile mevcut veriyi döndür
-      if (settings[id]) {
-        res.status(200).json(settings[id]);
-      } else {
-        res.status(404).json({ message: 'Not Found' });
-      }
+    const settings = {
+      id: 1,
+      status: 1
+    };
+  
+    // Diğer HTTP yöntemlerini işleyin
+    if (req.method === 'PATCH') {
+      const { status } = req.body;
+      settings.status = status; // Burada `status` alanını güncelleyin
+      res.status(200).json(settings);
+    } else if (req.method === 'GET') {
+      res.status(200).json(settings);
     } else {
-      // Desteklenmeyen HTTP yöntemleri için hata yanıtı
-      res.setHeader('Allow', ['PATCH', 'GET']);
-      res.status(405).end(`Method ${method} Not Allowed`);
+      res.setHeader('Allow', ['GET', 'PATCH', 'OPTIONS']);
+      res.status(405).end(`Method ${req.method} Not Allowed`);
     }
   }
   
