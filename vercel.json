@@ -2,7 +2,7 @@
     "functions": {
       "api/json-server.js": {
         "runtime": "nodejs18.x",
-        "maxDuration": 10
+        "maxDuration": 60
       }
     },
     "headers": [
