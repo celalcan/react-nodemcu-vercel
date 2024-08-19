@@ -1,12 +1,12 @@
 export default function handler(req, res) {
     // CORS başlıklarını ekleyin
     res.setHeader('Access-Control-Allow-Origin', '*'); // Tüm kaynaklara izin ver
-    res.setHeader('Access-Control-Allow-Methods', 'GET, PATCH, OPTIONS'); // İzin verilen yöntemler
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, PATCH, OPTIONS'); // İzin verilen HTTP yöntemleri
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // İzin verilen başlıklar
   
-    // OPTIONS isteği olduğunda, hızlıca 200 yanıt gönderin
+    // Preflight isteği ise
     if (req.method === 'OPTIONS') {
-      res.status(200).end();
+      res.status(200).end(); // Hızlıca 200 ile yanıt verin
       return;
     }
   
@@ -15,10 +15,10 @@ export default function handler(req, res) {
       status: 1
     };
   
-    // Diğer HTTP yöntemlerini işleyin
+    // PATCH isteği işleme
     if (req.method === 'PATCH') {
       const { status } = req.body;
-      settings.status = status; // Burada `status` alanını güncelleyin
+      settings.status = status; // Status güncellenir
       res.status(200).json(settings);
     } else if (req.method === 'GET') {
       res.status(200).json(settings);
